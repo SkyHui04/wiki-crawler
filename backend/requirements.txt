@@ -1,0 +1,11 @@
+numpy
+latticedb
+beautifulsoup4
+pytest
+pytest-asyncio
+fastapi
+fastapi[standard]
+slowapi
+ratelimit
+black>=26.1.0
+pydantic-to-typescript2

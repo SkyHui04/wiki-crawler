@@ -1,0 +1,122 @@
+# ==============================
+# OS — macOS
+# ==============================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ==============================
+# Editor — VS Code (and general)
+# ==============================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ==============================
+# Frontend — React (Node.js)
+# ==============================
+**/node_modules
+frontend/.pnp
+frontend/.pnp.js
+frontend/.yarn-integrity
+frontend/yarn-error.log
+frontend/npm-debug.log*
+frontend/.npm
+frontend/.eslintcache
+frontend/.parcel-cache/
+
+# Build outputs (CRA / Vite / generic)
+frontend/build/
+frontend/dist/
+frontend/out/
+
+# Environment & local config (frontend)
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/.env.*.local
+
+# Test / coverage (frontend)
+frontend/coverage/
+frontend/.jest-cache/
+
+# ==============================
+# Backend — Python
+# ==============================
+# Bytecode & cache
+backend/**/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.pyc
+backend/.Python
+backend/*.so
+
+# Virtual environments (common names)
+backend/venv/
+backend/.venv/
+backend/env/
+backend/.env/
+backend/ENV/
+
+# Environment & secrets (backend)
+backend/.env
+backend/.env.local
+backend/.env.*.local
+backend/*.pem
+backend/*.key
+backend/credentials.json
+backend/service_account.json
+
+# Build / packaging
+backend/build/
+backend/dist/
+backend/*.egg-info/
+backend/eggs/
+backend/wheels/
+backend/*.egg
+
+# Testing & coverage (backend)
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+backend/.tox/
+backend/.nox/
+backend/.mypy_cache/
+
+# Logs
+backend/*.log
+backend/logs/
+
+# IDE / tooling (backend-specific)
+backend/.idea/
+backend/.vscode/
+backend/*.ipynb_checkpoints
+
+# ==============================
+# General / repo-wide
+# ==============================
+# Env & secrets at root (if you ever add them)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Logs & temp
+*.log
+logs/
+tmp/
+temp/
+debug.ipynb
+
