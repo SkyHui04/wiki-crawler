@@ -1,13 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "wiki-crawler"
 version = "0.1.0"
 description = ""
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "latticedb",
+    "beautifulsoup4",
+    "fastapi",
+    "fastapi[standard]",
+    "slowapi",
+    "ratelimit",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-asyncio",
+]
+dev = [
+    "black>=26.1.0",
+    "pydantic-to-typescript2",
+    "ruff",
+]
 
 [tool.fastapi]
 entrypoint = "app.main:app"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["app*"]  # Only find and package 'app'
 
 [tool.black]
 target-version = ['py313']
