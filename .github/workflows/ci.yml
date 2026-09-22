@@ -36,7 +36,8 @@ jobs:
             pyproject.toml \
             --extra test \
             --extra dev \
-            --output-file check_requirements.txt
+            --output-file check_requirements.txt \
+            --no-header
 
           diff --strip-trailing-cr -- requirements.txt check_requirements.txt
 
