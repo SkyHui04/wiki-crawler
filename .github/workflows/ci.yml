@@ -45,9 +45,11 @@ jobs:
         run: |
           uv pip install \
             --requirement requirements.txt
+            --system
 
           uv pip install \
             --no-deps .
+            --system
 
       - name: Format
         run: black --check .
@@ -112,9 +114,11 @@ jobs:
         run: |
           uv pip install \
             --requirement requirements.txt
+            --system
 
           uv pip install \
             --no-deps .
+            --system
 
       - name: Synchronize schemas
         run: bash tools/sync-schemas.sh
