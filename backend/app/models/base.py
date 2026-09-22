@@ -58,7 +58,14 @@ class LatticeIndexableModel(ABC, BaseModel):
                     continue
 
                 if field_properties["lattice_index"] in _LATTICE_INDEX_TYPES:
-                    indexed_properties[field_name] = field_properties["lattice_index"]
+                    if field_name in indexed_properties:
+                        raise ValueError(
+                            f"The field {field_name} is set as Lattice Index in more than one place."
+                        )
+                    else:
+                        indexed_properties[field_name] = field_properties[
+                            "lattice_index"
+                        ]
                 else:
                     raise ValueError(
                         f"The lattice_index property of field {field_name} must take "
