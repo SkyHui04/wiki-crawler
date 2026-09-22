@@ -5,7 +5,8 @@
         "concurrently": "^10.0.5",
         "cross-env": "^10.1.0",
         "dotenv-cli": "^11.0.0",
-        "env-cmd": "^11.0.0"
+        "env-cmd": "^11.0.0",
+        "json-schema-to-typescript": "^16.0.0"
     },
     "config": {
         "frontend_port": "3000",
