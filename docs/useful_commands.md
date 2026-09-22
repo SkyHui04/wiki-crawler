@@ -24,7 +24,7 @@ black .
 ### Run unit test
 ```bash
 # cur dir: /backend
-python -m unittest -vs
+pytest -v
 ```
 
 ### Generate frontend schemas
