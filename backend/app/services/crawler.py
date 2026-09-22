@@ -57,9 +57,6 @@ class Crawler:
     async def crawl_once(
         self, query_manager: ConcurrentQueryManager, link: WikiArticleLink | None
     ) -> WikiArticleLink | None:
-        # TODO: fix behaviour
-        # When a link / article is already explored,
-        # the the unexplored node should be merged with the actual node
         async with asyncio.timeout(CRAWL_TIMEOUT):
             if self.shutdown.is_set() or not self.enabled.is_set():
                 return None
