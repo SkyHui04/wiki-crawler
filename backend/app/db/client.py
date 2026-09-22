@@ -1,9 +1,10 @@
 from latticedb import Database, LatticeAlreadyExistsError
-from app.core.config import LATTICE_DB_PATH
+from app.core.config import LOCAL_DATA_DIR_PATH, LATTICE_DB_PATH, RESET_DB_ON_RUN
 from app.models.base import BaseNode, BaseEdge
 import app.models.nodes
 import app.models.edges
 import inspect
+import shutil
 
 NODE_MODELS: list[type[BaseNode]] = [
     clazz
@@ -20,6 +21,18 @@ EDGE_MODELS: list[type[BaseEdge]] = [
     )
     if clazz.__module__ == app.models.edges.__name__
 ]
+
+
+def reset_db():
+    print(f"Resetting database...")
+    for item in LOCAL_DATA_DIR_PATH.iterdir():
+        if item.name == ".gitignore":
+            continue
+
+        if item.is_file():
+            item.unlink()
+        elif item.is_dir():
+            shutil.rmtree(item)
 
 
 def create_indices(db: Database):
@@ -50,6 +63,10 @@ def create_indices(db: Database):
 
     except LatticeAlreadyExistsError:
         print("Index already exists.")
+
+
+if RESET_DB_ON_RUN:
+    reset_db()
 
 
 _db = Database(LATTICE_DB_PATH, create=True)
