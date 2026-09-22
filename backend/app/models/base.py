@@ -35,6 +35,10 @@ class LatticeIndexableModel(ABC, BaseModel):
     """
 
     @classmethod
+    def get_fields(cls) -> list[str]:
+        return list(cls.model_fields.keys()) + list(cls.model_computed_fields.keys())
+
+    @classmethod
     def get_indexed_fields(cls) -> dict[str, LatticeIndexType]:
         indexed_properties: dict[str, LatticeIndexType] = {}
 
@@ -76,10 +80,6 @@ class BaseNode(LatticeIndexableModel):
     def get_node_labels(cls) -> list[str]:
         return [c.__name__ for c in cls.__mro__ if c not in BaseNode.__mro__]
 
-    @classmethod
-    def get_fields(cls) -> list[str]:
-        return list(cls.model_fields.keys()) + list(cls.model_computed_fields.keys())
-
 
 class BaseEdge(LatticeIndexableModel):
     id: Annotated[str, LatticeIndex("Exact")]
@@ -87,7 +87,3 @@ class BaseEdge(LatticeIndexableModel):
     @classmethod
     def get_edge_type(cls) -> str:
         return cls.__name__
-
-    @classmethod
-    def get_fields(cls) -> list[str]:
-        return list(cls.model_fields.keys()) + list(cls.model_computed_fields.keys())
