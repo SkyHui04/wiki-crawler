@@ -151,6 +151,9 @@ jobs:
             --no-deps . \
             --system
 
+      - name: Verify json2ts
+        run: ./node_modules/.bin/json2ts --help
+
       - name: Synchronize schemas
         run: bash tools/sync-schemas.sh
 
