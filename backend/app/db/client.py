@@ -1,10 +1,12 @@
-from latticedb import Database, LatticeAlreadyExistsError
-from app.core.config import LOCAL_DATA_DIR_PATH, LATTICE_DB_PATH, RESET_DB_ON_RUN
-from app.models.base import BaseNode, BaseEdge
-import app.models.nodes
-import app.models.edges
 import inspect
 import shutil
+
+from latticedb import Database, LatticeAlreadyExistsError
+
+import app.models.edges
+import app.models.nodes
+from app.core.config import LATTICE_DB_PATH, LOCAL_DATA_DIR_PATH, RESET_DB_ON_RUN
+from app.models.base import BaseEdge, BaseNode
 
 NODE_MODELS: list[type[BaseNode]] = [
     clazz
@@ -24,7 +26,7 @@ EDGE_MODELS: list[type[BaseEdge]] = [
 
 
 def reset_db():
-    print(f"Resetting database...")
+    print("Resetting database...")
     for item in LOCAL_DATA_DIR_PATH.iterdir():
         if item.name == ".gitignore":
             continue

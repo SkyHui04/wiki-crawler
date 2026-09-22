@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
-from app.core.config import get_limiter, FRONTEND_POST
+
+from app.core.config import get_limiter
 from app.core.lifespan import lifespan
 
 app = FastAPI(lifespan=lifespan)

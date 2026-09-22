@@ -1,7 +1,9 @@
-import pytest
-from app.models.base import LatticeIndexableModel, LatticeIndex, LatticeIndexType
-from pydantic import computed_field, Field
 from typing import Annotated
+
+import pytest
+from pydantic import Field, computed_field
+
+from app.models.base import LatticeIndex, LatticeIndexableModel
 
 
 class DummyLatticeIndexableModel(LatticeIndexableModel):

@@ -1,7 +1,3 @@
-import pytest
-from app.services.transform import (
-    extract_article,
-)
 from pathlib import Path
 
 test_article_path = Path(__file__).resolve().parent / "test_article.html"

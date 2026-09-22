@@ -1,7 +1,8 @@
+import os
+from pathlib import Path
+
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from pathlib import Path
-import os
 
 LOCAL_DATA_DIR_PATH = Path(__file__).parents[2].resolve() / "data"
 LATTICE_DB_PATH = LOCAL_DATA_DIR_PATH / "graph.db"

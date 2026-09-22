@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends
-from app.schemas.crawler import CrawlerStatusResponse, CrawlerStartRequest
-from app.services.crawler import get_crawler, Crawler
+from fastapi import APIRouter
+
+from app.schemas.crawler import CrawlerStartRequest, CrawlerStatusResponse
+from app.services.crawler import Crawler, get_crawler
 
 router = APIRouter(prefix="/v1/crawler", tags=["crawler"])
 

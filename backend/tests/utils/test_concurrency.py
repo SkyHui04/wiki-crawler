@@ -1,7 +1,9 @@
-import pytest
-from app.utils.concurrency import ConcurrentTaskManager
-import time
 import asyncio
+import time
+
+import pytest
+
+from app.utils.concurrency import ConcurrentTaskManager
 
 _SLEEP_MULTIPLIER = 0.05
 _ACCEPTABLE_LATENCY_PCT = 0.25
@@ -37,7 +39,7 @@ class Timer:
 async def test_ctm_single_threaded():
     with DummyConcurrentTaskManager(1) as ctm, Timer() as timer:
         async with asyncio.timeout(_SLEEP_MULTIPLIER * 50):
-            results = await asyncio.gather(*[ctm.assign_and_run(1) for _ in range(20)])
+            await asyncio.gather(*[ctm.assign_and_run(1) for _ in range(20)])
 
     expected_duration = _SLEEP_MULTIPLIER * 20
 
@@ -51,7 +53,7 @@ async def test_ctm_single_threaded():
 async def test_ctm_multi_threaded():
     with DummyConcurrentTaskManager(4) as ctm, Timer() as timer:
         async with asyncio.timeout(_SLEEP_MULTIPLIER * 50):
-            results = await asyncio.gather(*[ctm.assign_and_run(1) for _ in range(20)])
+            await asyncio.gather(*[ctm.assign_and_run(1) for _ in range(20)])
 
     expected_duration = _SLEEP_MULTIPLIER * 20 / 4
 

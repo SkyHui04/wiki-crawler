@@ -1,6 +1,7 @@
-from pydantic import BaseModel
-from typing import Literal, Annotated
 from abc import ABC
+from typing import Annotated, Literal
+
+from pydantic import BaseModel
 
 type LatticeIndexType = Literal["Exact", "FTS"]
 

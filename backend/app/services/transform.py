@@ -1,8 +1,9 @@
-from app.types.wiki_objects import (
-    WikiArticleLink,
-    WikiArticle,
-)
 from bs4 import BeautifulSoup
+
+from app.types.wiki_objects import (
+    WikiArticle,
+    WikiArticleLink,
+)
 
 
 def extract_article(raw_text: str) -> WikiArticle:
@@ -11,11 +12,7 @@ def extract_article(raw_text: str) -> WikiArticle:
         title = ""
     else:
         title_suffic = " - Wikipedia"
-        title = (
-            soup.title.text[: -len(title_suffic)]
-            if soup.title.text.endswith(title_suffic)
-            else soup.title.text
-        )
+        title = soup.title.text.removesuffix(title_suffic)
 
     section_tags = soup.find_all(
         lambda tag: tag.has_attr("data-mw-section-id"),

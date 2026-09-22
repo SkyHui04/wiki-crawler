@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends
-from app.services.crud import fetch_graph
+from fastapi import APIRouter
+
 from app.db.client import get_db_client
 from app.schemas.graph import GraphResponse
+from app.services.crud import fetch_graph
 
 router = APIRouter(prefix="/v1/graph", tags=["graph"])
 

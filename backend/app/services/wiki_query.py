@@ -1,5 +1,6 @@
 import requests
 from ratelimit import limits, sleep_and_retry
+
 from app.utils.concurrency import ConcurrentTaskManager
 
 _RANDOM_WIKI_URL = "https://en.wikipedia.org/wiki/Special:Random"

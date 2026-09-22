@@ -1,4 +1,5 @@
 import pytest
+
 from app.types.wiki_objects import WikiArticleLink
 
 

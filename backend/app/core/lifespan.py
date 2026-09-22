@@ -1,8 +1,10 @@
 import asyncio
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-from app.services.crawler import get_crawler
+
 from app.db.client import get_db_client
+from app.services.crawler import get_crawler
 
 
 @asynccontextmanager

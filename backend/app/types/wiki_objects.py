@@ -1,5 +1,6 @@
-from pydantic import BaseModel, computed_field
 import re
+
+from pydantic import BaseModel, computed_field
 
 IGNORE_SECTIONS = ("See_also", "Notes", "References", "External_links")
 
@@ -17,13 +18,12 @@ class WikiArticleLink(BaseModel):
         ):
             return True
 
-        if re.match(
-            r"^https?://en.wikipedia.org/wiki/Help:[a-zA-Z0-9\-._~%!$&'()*+,;=:@\/]+$",
-            self.link,
-        ):
-            return True
-
-        return False
+        return bool(
+            re.match(
+                r"^https?://en.wikipedia.org/wiki/Help:[a-zA-Z0-9\-._~%!$&'()*+,;=:@\/]+$",
+                self.link,
+            )
+        )
 
 
 class WikiArticle(BaseModel):

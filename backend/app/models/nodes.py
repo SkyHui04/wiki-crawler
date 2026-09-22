@@ -1,6 +1,8 @@
-from app.models.base import BaseNode, LatticeIndex
 from typing import Annotated, Literal
+
 from pydantic import computed_field
+
+from app.models.base import BaseNode, LatticeIndex
 
 type WikiArticleNodeStatus = Literal["Unexplored", "Explored"]
 

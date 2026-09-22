@@ -1,9 +1,10 @@
-from pydantic import BaseModel
-from app.models.base import BaseNode, BaseEdge
-from app.db.client import get_db_client
-from typing import Any
-from latticedb import Transaction
 import json
+from typing import Any
+
+from latticedb import Transaction
+from pydantic import BaseModel
+
+from app.models.base import BaseEdge, BaseNode
 
 
 def create_node(txn: Transaction, node: BaseNode) -> int:
@@ -44,7 +45,7 @@ def replace_node(txn: Transaction, node_id: int, node: BaseNode) -> int:
     if db_old_node is None:
         raise RuntimeError(f"Node [{node_id}] does not exist.")
 
-    is_child_class = all([label in labels for label in db_old_node.labels])
+    is_child_class = all((label in labels) for label in db_old_node.labels)
     if not is_child_class:
         raise RuntimeError(
             f"{node.__class__.__name__} is not a child class of node with labels: {db_old_node.labels}"

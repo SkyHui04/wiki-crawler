@@ -1,6 +1,6 @@
-from abc import ABC, abstractmethod
-from concurrent.futures import Future, ThreadPoolExecutor
 import asyncio
+from abc import ABC, abstractmethod
+from concurrent.futures import ThreadPoolExecutor
 from threading import Lock
 from typing import Self
 

@@ -1,24 +1,26 @@
-from app.types.wiki_objects import WikiArticle, WikiArticleLink
-from app.models.nodes import (
-    WikiArticleNode,
-    WikiArticleExploredNode,
-)
-from app.models.edges import WikiHeadLinkEdge
-from app.schemas.graph import GraphSchema, NodeSchema, EdgeSchema
+import uuid
+
+from latticedb import Transaction
+
 from app.db.graph import (
-    create_node,
     create_edge,
+    create_node,
     find_edge_ids_by_properties,
     find_node_ids_by_properties,
-    replace_node,
-    get_all_node_ids,
     get_all_edge_ids,
+    get_all_node_ids,
     get_edge_properties,
     get_node_properties,
     get_node_properties_dict,
+    replace_node,
 )
-from latticedb import Transaction
-import uuid
+from app.models.edges import WikiHeadLinkEdge
+from app.models.nodes import (
+    WikiArticleExploredNode,
+    WikiArticleNode,
+)
+from app.schemas.graph import EdgeSchema, GraphSchema, NodeSchema
+from app.types.wiki_objects import WikiArticle, WikiArticleLink
 
 
 def get_explored_node_id_by_link(txn: Transaction, url: str | None) -> int | None:

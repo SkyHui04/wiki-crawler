@@ -2,18 +2,18 @@ import asyncio
 import traceback
 from threading import Lock
 
-from app.services.wiki_query import ConcurrentQueryManager
-from app.utils.atomic import AtomicCounter
-from app.types.wiki_objects import WikiArticleLink, WikiArticle
-from app.services.transform import extract_article
+from app.db.client import get_db_client
 from app.schemas.crawler import CrawlerStatus
 from app.services.crud import (
-    get_explored_node_id_by_link,
     get_explored_node_id_by_article,
-    save_article,
+    get_explored_node_id_by_link,
     rewire_unexplored_node,
+    save_article,
 )
-from app.db.client import get_db_client
+from app.services.transform import extract_article
+from app.services.wiki_query import ConcurrentQueryManager
+from app.types.wiki_objects import WikiArticle, WikiArticleLink
+from app.utils.atomic import AtomicCounter
 
 CRAWL_TIMEOUT = 15.0
 
@@ -50,7 +50,7 @@ class Crawler:
                         )
                     except (asyncio.CancelledError, KeyboardInterrupt):
                         raise
-                    except Exception as exc:
+                    except RuntimeError as exc:
                         print(f"Crawler error: {exc}")
                         traceback.print_exc()
 
