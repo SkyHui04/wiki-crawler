@@ -97,7 +97,6 @@ backend/.mypy_cache/
 # Logs
 backend/*.log
 backend/logs/
-backend/data
 
 # IDE / tooling (backend-specific)
 backend/.idea/
